@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#e8eff6">
+  <title>片刻 · 留一点空白</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="eye-guide.css">
+  <link rel="stylesheet" href="iteration.css">
+  <link rel="stylesheet" href="body-guide.css">
+</head>
+<body>
+  <svg class="icon-defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+    <symbol id="icon-ripple" viewBox="0 0 24 24"><path d="M12 2.7a9.3 9.3 0 0 0-9.3 9.3M12 6.3a5.7 5.7 0 1 0 5.7 5.7M12 9.7a2.3 2.3 0 1 0 2.3 2.3M12 21.3a9.3 9.3 0 0 0 9.3-9.3"/></symbol>
+    <symbol id="icon-leaf" viewBox="0 0 24 24"><path d="M18.6 4.4c-6.3.2-11.8 2.2-12 8.2-.1 2.4 1.2 4.2 3.6 4.2 6 0 8.3-5.3 8.4-12.4Z"/><path d="m5.4 19 8-9.4"/></symbol>
+    <symbol id="icon-focus" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7.7"/><circle cx="12" cy="12" r="2.6"/></symbol>
+    <symbol id="icon-eye" viewBox="0 0 24 24"><path d="M2.5 12s3.5-6.5 9.5-6.5 9.5 6.5 9.5 6.5-3.5 6.5-9.5 6.5S2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="2.7"/></symbol>
+    <symbol id="icon-history" viewBox="0 0 24 24"><path d="M4.4 7a8.2 8.2 0 1 1-1.1 7M3 4v5h5M12 7v5l3 2"/></symbol>
+    <symbol id="icon-settings" viewBox="0 0 24 24"><path d="M3 7h10m5 0h3M3 17h3m5 0h10"/><circle cx="15.5" cy="7" r="2.5"/><circle cx="8.5" cy="17" r="2.5"/></symbol>
+    <symbol id="icon-chevron" viewBox="0 0 24 24"><path d="m7 14 5-5 5 5"/></symbol>
+    <symbol id="icon-expand" viewBox="0 0 24 24"><path d="M8 3v5H3m13-5v5h5M8 21v-5H3m13 5v-5h5"/></symbol>
+    <symbol id="icon-speaker" viewBox="0 0 24 24"><path d="M11 5 6 9H3v6h3l5 4V5Zm4 4a5 5 0 0 1 0 6m3-9a9 9 0 0 1 0 12"/></symbol>
+    <symbol id="icon-stop" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="2"/></symbol>
+    <symbol id="icon-fullscreen" viewBox="0 0 24 24"><path d="M8 3v5H3m13-5v5h5M8 21v-5H3m13 5v-5h5"/></symbol>
+  </defs></svg>
+
+  <div class="desktop-backdrop" aria-hidden="true">
+    <div class="desktop-paper">
+      <div class="paper-toolbar"><i></i><i></i><i></i><span>阅读 · 一点空白</span></div>
+      <div class="paper-content"><span class="paper-eyebrow">READING NOTES</span><h2>让注意，回到当下。</h2><div class="paper-rule"></div><p>阅读的时候，我们会不时停下来。把手边的事情稍稍放一放，给自己留一点空白。</p><div class="paper-lines"><i></i><i></i><i></i><i></i></div><p>无需赶着完成什么。在自己的节奏里，安静地待一会儿，然后继续向前。</p><div class="paper-lines"><i></i><i></i><i></i><i></i><i></i></div><p>下一段文字，依然在那里。</p></div>
+    </div>
+  </div>
+
+  <div class="macbar" aria-label="菜单栏入口演示">
+    <div class="macbar-left" aria-hidden="true"><span class="apple-mark">●</span><strong>片刻</strong><span>文件</span><span>编辑</span><span>显示</span><span>窗口</span><span>帮助</span></div>
+    <div class="macbar-right"><button id="menuToggle" class="menubar-trigger" aria-label="打开或收起片刻" title="打开或收起片刻 · 页面内演示"><svg class="icon"><use href="#icon-ripple"/></svg></button><span class="system-icons" aria-hidden="true">▰　⌁　⌕</span><span class="macbar-caption">留一点空白</span></div>
+  </div>
+
+  <div class="app">
+    <header class="panel-topbar">
+      <a class="brand" href="#" aria-label="片刻首页"><svg class="icon"><use href="#icon-ripple"/></svg><span>片刻</span></a>
+      <nav class="category-tabs" aria-label="选择练习方向">
+        <button data-category="relax" class="active" aria-pressed="true"><svg class="icon"><use href="#icon-leaf"/></svg><span>放松一下</span></button>
+        <button data-category="focus" aria-pressed="false"><svg class="icon"><use href="#icon-focus"/></svg><span>找回专注</span></button>
+        <button data-category="eyes" aria-pressed="false"><svg class="icon"><use href="#icon-eye"/></svg><span>眼睛休息</span></button>
+      </nav>
+      <div class="panel-actions"><button id="recordsBtn" class="icon-button" aria-label="练习记录" title="练习记录"><svg class="icon"><use href="#icon-history"/></svg></button><button id="settingsBtn" class="icon-button" aria-label="偏好与提醒" title="偏好与提醒"><svg class="icon"><use href="#icon-settings"/></svg></button></div>
+    </header>
+    <main>
+      <section class="panel-intro"><h1 id="heading">放松一下</h1><p id="subheading">选一种方式，停留几分钟</p></section>
+      <div class="visually-hidden"><h2 id="categoryTitle">放松一下</h2><span id="categoryHint">可以闭眼 · 不需要完成任何任务</span></div>
+      <section id="cards" class="cards" aria-label="练习方法"></section>
+    </main>
+    <footer class="panel-footer"><div class="shortcut-hint"><kbd>⌘</kbd><kbd>⇧</kbd><kbd>K</kbd><span>随时呼出</span><i>·</i><kbd>esc</kbd><span>收起</span></div><div class="footer-actions"><button id="aboutBtn">预览说明</button><button id="miniBtn" aria-label="收起到页面菜单栏" title="收起到页面菜单栏"><svg class="icon"><use href="#icon-chevron"/></svg><span>收起</span></button></div></footer>
+  </div>
+  <p class="preview-boundary">浏览器体验预览 · 系统菜单栏与全局快捷键待接入</p>
+
+  <div id="overlay" class="overlay" hidden><section id="dialog" class="dialog" role="dialog" aria-modal="true" aria-labelledby="dialogTitle" tabindex="-1"></section></div>
+
+  <div id="session" class="session" hidden>
+    <canvas id="motionCanvas" aria-hidden="true"></canvas>
+    <div id="dragHandle" class="sessiontop session-chrome"><span id="sessionLabel"></span><div><button id="viewBtn">切为浮窗</button><button id="endBtn">提前结束</button></div></div>
+    <div id="experience" class="experience"></div>
+    <div class="sessionbottom session-chrome" role="group" aria-label="练习控制">
+      <div class="audioControls"><button id="muteBtn" class="icon-control" aria-label="静音" title="声音"><svg class="icon"><use href="#icon-speaker"/></svg></button><label class="visually-hidden" for="volume">音量</label><input id="volume" type="range" min="0" max="100" value="25" aria-label="音量"></div>
+      <span class="control-divider" aria-hidden="true"></span><button id="pauseBtn" aria-label="暂停" title="暂停">暂停</button><div id="timeLabel" aria-live="off">03:00 <span>剩余</span></div><span class="control-divider" aria-hidden="true"></span><button id="endControlBtn" class="end-control"><svg class="icon"><use href="#icon-stop"/></svg><span>提前结束</span></button><button id="fullscreenBtn" class="icon-control" aria-label="进入全屏" title="进入全屏"><svg class="icon"><use href="#icon-fullscreen"/></svg></button>
+    </div>
+    <div id="audioStatus" class="audioStatus" role="status"></div>
+  </div>
+
+  <button id="wake" class="wake" hidden><svg class="icon"><use href="#icon-ripple"/></svg><span>打开片刻</span></button>
+  <div id="notice" class="notice" role="status" hidden></div>
+  <script src="motion.js"></script>
+  <script src="eye-guide.js"></script>
+  <script src="content.js"></script>
+  <script src="body-guide.js"></script>
+  <script src="ambience.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
