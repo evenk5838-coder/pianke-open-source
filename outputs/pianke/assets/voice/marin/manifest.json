@@ -1,0 +1,395 @@
+{
+  "voice": "Marin",
+  "provider": "OpenAI",
+  "model": "gpt-realtime-2.1-mini",
+  "ai_generated": true,
+  "speed": 1.0,
+  "processing": "none",
+  "clips": [
+    {
+      "id": "B01",
+      "group": "breath",
+      "text": "用鼻子，轻轻吸气。",
+      "file": "B01.wav",
+      "duration": 2.65,
+      "sha256": "c7091a0c538c55b171b7860657ac490cd91e0d420d07b5bb772e32fece1ffc5f"
+    },
+    {
+      "id": "B02",
+      "group": "breath",
+      "text": "用嘴巴，缓缓呼气。",
+      "file": "B02.wav",
+      "duration": 2.6,
+      "sha256": "a2dd9af29508eccca90c3da15b64ed2e74d26438628c215fd8317ebc78940a09"
+    },
+    {
+      "id": "B03",
+      "group": "breath",
+      "text": "鼻子吸气。",
+      "file": "B03.wav",
+      "duration": 1.1,
+      "sha256": "765290d02ff9902012bfdf4a8ce00a01474c4fcd995b66f27edcc6f03cb9dca1"
+    },
+    {
+      "id": "B04",
+      "group": "breath",
+      "text": "嘴巴呼气。接下来，高音吸，低音呼。",
+      "file": "B04.wav",
+      "duration": 4.15,
+      "sha256": "405d71e4f35af10085cc2ac6e1db168334aa935196bb665eeec30da47d2f4fb3"
+    },
+    {
+      "id": "S01",
+      "group": "body",
+      "text": "如果舒服，可以闭上眼睛。留意鼻尖，感觉空气轻轻经过。呼吸保持自然。",
+      "file": "S01.wav",
+      "duration": 8.3,
+      "sha256": "35b3fc04b6cd0596249d7b064603ddc6f6f0b0c4d8eab1f624bb24266d7bef64"
+    },
+    {
+      "id": "S02",
+      "group": "body",
+      "text": "留意眼睛周围。眼皮自然合着，不需要再寻找什么。",
+      "file": "S02.wav",
+      "duration": 6.3,
+      "sha256": "397123554cc36e4ed79315523e6066022bc9aa41fdbe6cd1a242ef4b8436ce33"
+    },
+    {
+      "id": "S03",
+      "group": "body",
+      "text": "留意额头。眉毛自然放着，不必刻意做表情。",
+      "file": "S03.wav",
+      "duration": 5.05,
+      "sha256": "324674e670bd161efb23b339dd51e7cecc823f6481ba395ef08114b64e69ae80"
+    },
+    {
+      "id": "S04",
+      "group": "body",
+      "text": "感觉两侧脸颊。让面部保持舒服的状态。",
+      "file": "S04.wav",
+      "duration": 4.1,
+      "sha256": "d0886f9ebdf9fc1f4910df68b6fd35776b603b28d95e527638a45ce07a7a127e"
+    },
+    {
+      "id": "S05",
+      "group": "body",
+      "text": "留意嘴唇和下颌。牙齿不必咬紧。",
+      "file": "S05.wav",
+      "duration": 3.8,
+      "sha256": "3d55fc3e57507a913e2b8ddcd6a33b68dac706f8317c6c3e0be1e3f07866562a"
+    },
+    {
+      "id": "S06",
+      "group": "body",
+      "text": "听见周围的声音就好。不需要分辨，也不必排除。",
+      "file": "S06.wav",
+      "duration": 5.3,
+      "sha256": "8313bab01161b2f79a2f945f4a8df019c95923435778c5d879a01170e222cd79"
+    },
+    {
+      "id": "S07",
+      "group": "body",
+      "text": "感觉颈部此刻的状态。头自然地安放着。",
+      "file": "S07.wav",
+      "duration": 4.35,
+      "sha256": "48bc30634bc9c2819156db5018d297fc929e2b36ab41f5adcbeeadf2d5b46974"
+    },
+    {
+      "id": "S08",
+      "group": "body",
+      "text": "把注意放到肩膀。可以让肩膀稍稍松下来。",
+      "file": "S08.wav",
+      "duration": 3.85,
+      "sha256": "75f5f3502636da5ed1014376c567b359451aec81857e82e62625edb48d93d996"
+    },
+    {
+      "id": "S09",
+      "group": "body",
+      "text": "留意上臂和前臂。让它们被桌面、扶手或腿部承托。",
+      "file": "S09.wav",
+      "duration": 6.1,
+      "sha256": "39f4b1e23644a49c48aef6232265077ac5ae8456bf48a83d6236d817d9d15c95"
+    },
+    {
+      "id": "S10",
+      "group": "body",
+      "text": "感觉手掌和指尖。是暖的、凉的，还是没有明显感觉，都可以。",
+      "file": "S10.wav",
+      "duration": 6.85,
+      "sha256": "28ae2a8e38e3e674bee3e106c3953138500e1a223d7bc3af2f3dfdafad244678"
+    },
+    {
+      "id": "S11",
+      "group": "body",
+      "text": "留意胸口随着呼吸轻轻起伏。不需要把气吸得更深。",
+      "file": "S11.wav",
+      "duration": 5.9,
+      "sha256": "a4e8d0f19a0bccb78a9a401e2eec6493c3ec703b433275bde0bc83af9a2844d6"
+    },
+    {
+      "id": "S12",
+      "group": "body",
+      "text": "把注意放到腹部，感受呼吸带来的一点点变化。",
+      "file": "S12.wav",
+      "duration": 4.45,
+      "sha256": "468f2edaf246ab2831161d142ad0744cee7dea2e4522cedb013536547a68f5e8"
+    },
+    {
+      "id": "S13",
+      "group": "body",
+      "text": "感觉背部与椅背的接触。让椅子承托一部分重量。",
+      "file": "S13.wav",
+      "duration": 5.0,
+      "sha256": "7450e13fee2ab55008a23289c42ab35157d5cb8abd060d9a1c0245fa1f535acd"
+    },
+    {
+      "id": "S14",
+      "group": "body",
+      "text": "留意腰和髋部。坐垫正在承托着身体。",
+      "file": "S14.wav",
+      "duration": 4.2,
+      "sha256": "fcd8c87ea1941ff1969ba368da4974e1b3f4e4dd29f25ed29850a10300009d6b"
+    },
+    {
+      "id": "S15",
+      "group": "body",
+      "text": "感觉大腿和坐面的接触。双腿自然放着。",
+      "file": "S15.wav",
+      "duration": 4.25,
+      "sha256": "87d60754337602a82bc2afab3f4b15c409e3d2d8d30117132c65a66da1b4921d"
+    },
+    {
+      "id": "S16",
+      "group": "body",
+      "text": "让注意慢慢来到小腿，不需要收紧或拉伸。",
+      "file": "S16.wav",
+      "duration": 4.75,
+      "sha256": "d76e1b143712baf945c5ffb17fc014ece8efd4223b7773c769d61a123d3e1a46"
+    },
+    {
+      "id": "S17",
+      "group": "body",
+      "text": "感觉脚底和地面的接触。脚趾可以自然放松。",
+      "file": "S17.wav",
+      "duration": 5.15,
+      "sha256": "09271eb59dded64f0574f81bdd781c731fbe9537ffce4dd5bb9fe723be8efca2"
+    },
+    {
+      "id": "S18",
+      "group": "body",
+      "text": "把注意放回整个身体。安静地停留一会儿，保持舒服的呼吸。",
+      "file": "S18.wav",
+      "duration": 6.85,
+      "sha256": "f41d9b04023dd69ca667e4d5438689897c0b0b8b72c535249eb429c218cb86d2"
+    },
+    {
+      "id": "F01",
+      "group": "focus",
+      "text": "看看圆心与周围的柔光。正常眨眼，不必盯紧。",
+      "file": "F01.wav",
+      "duration": 6.1,
+      "sha256": "155ee8240f9f1b777c79805bf78f5f5dad662b3623d373c9aaa57d55afde3d9c"
+    },
+    {
+      "id": "F02",
+      "group": "focus",
+      "text": "如果刚才走神了，现在轻轻回到眼前的圆心。",
+      "file": "F02.wav",
+      "duration": 5.35,
+      "sha256": "60324640a53467d5f4e340e21b1448a64f675aaa256aaea94fb8531dc74f1ef7"
+    },
+    {
+      "id": "F03",
+      "group": "focus",
+      "text": "圆心与周围的柔光，都可以成为观察的对象。",
+      "file": "F03.wav",
+      "duration": 4.25,
+      "sha256": "ef4b4237efc60e6fc8f8b20562b1f29bab40de257698739cc79fbcf7c8090f3e"
+    },
+    {
+      "id": "F04",
+      "group": "focus",
+      "text": "不需要责备自己。重新看见眼前，就已经开始了。",
+      "file": "F04.wav",
+      "duration": 5.2,
+      "sha256": "b6f96437cf7ebf8411a6a64fab54b5992fd854caf8218e87f511ba82d1a5f42a"
+    },
+    {
+      "id": "I01",
+      "group": "imagine",
+      "text": "可以闭上眼睛。想象一处安静的林间。",
+      "file": "I01.wav",
+      "duration": 4.4,
+      "sha256": "c2a49f4d50cdb8a49f331a70a443c17d0a3c9c57605c02271a5a9055951ef0aa"
+    },
+    {
+      "id": "I02",
+      "group": "imagine",
+      "text": "柔和的光透过树叶，远处有平静的水。",
+      "file": "I02.wav",
+      "duration": 4.15,
+      "sha256": "2fc3ac8b52831865b961d914542bbaf6d5f24ebc7d34ad5f367bd2ae144f9cc6"
+    },
+    {
+      "id": "I03",
+      "group": "imagine",
+      "text": "你可以在这里，什么都不用做。",
+      "file": "I03.wav",
+      "duration": 3.2,
+      "sha256": "8b58262fe7633849cb8e4f5e25e59428daf80edc0ba57346a604a636a1075468"
+    },
+    {
+      "id": "I04",
+      "group": "imagine",
+      "text": "不必抓住思绪，给它一点经过的空间。",
+      "file": "I04.wav",
+      "duration": 3.3,
+      "sha256": "8208f83851975f9186a99ed8cbfaf943f926512b36c78f29de669eaea54c4f5a"
+    },
+    {
+      "id": "I05",
+      "group": "imagine",
+      "text": "再安静地停留一会儿。",
+      "file": "I05.wav",
+      "duration": 2.35,
+      "sha256": "c4d76ffc0ec195d71762f44d36af03f6f3cbeef4ae39975b9d06a1b46f3a2cb5"
+    },
+    {
+      "id": "A01",
+      "group": "sound",
+      "text": "留意每次出现的柔和声音，走神后轻轻回来。",
+      "file": "A01.wav",
+      "duration": 5.65,
+      "sha256": "27fc03738c56849ac30624e39aa4027d8aa2de81ebc513f24912bf5cd2e5e710"
+    },
+    {
+      "id": "C01",
+      "group": "combo",
+      "text": "自然地，完整眨几次眼，不用挤眼。",
+      "file": "C01.wav",
+      "duration": 3.9,
+      "sha256": "9dc56c1e7786e1f9dcb5a1f81903e69b3a2b49fd6a107bf16f081188819c92d0"
+    },
+    {
+      "id": "C02",
+      "group": "combo",
+      "text": "头部放松，看正前方。",
+      "file": "C02.wav",
+      "duration": 2.2,
+      "sha256": "afe8af5ee30d2b3a769df6d72f6544b1d853e43ccef00464bfeddc286a74f859"
+    },
+    {
+      "id": "C03",
+      "group": "combo",
+      "text": "目光轻轻向上。",
+      "file": "C03.wav",
+      "duration": 2.55,
+      "sha256": "f0de295965b27f78af46d2740db0298e68be827930eec7bdfded9a0f532fb539"
+    },
+    {
+      "id": "C04",
+      "group": "combo",
+      "text": "回到正前方。",
+      "file": "C04.wav",
+      "duration": 1.6,
+      "sha256": "1cae5f1940323fd21e9a9b62848d9cd2bf73e20cb7cb9d60df585607cc1bb6be"
+    },
+    {
+      "id": "C05",
+      "group": "combo",
+      "text": "目光轻轻向下。",
+      "file": "C05.wav",
+      "duration": 2.05,
+      "sha256": "adc80b5d183ccc3942a8cfc3d2f503ecb5e015b73e48179043d550b4739c810a"
+    },
+    {
+      "id": "C06",
+      "group": "combo",
+      "text": "目光轻轻向左。",
+      "file": "C06.wav",
+      "duration": 2.2,
+      "sha256": "6f6a384512f9f86c4fb77b20489ca20494d60cc19feaaca5d46c2bb7a3f13763"
+    },
+    {
+      "id": "C07",
+      "group": "combo",
+      "text": "目光轻轻向右。",
+      "file": "C07.wav",
+      "duration": 1.85,
+      "sha256": "253e0810f266b7a46c8b50e92b01243cf850bc878bd7e0cf1e44ff90898f3243"
+    },
+    {
+      "id": "C08",
+      "group": "combo",
+      "text": "现在轻轻闭上眼睛，休息一会儿。",
+      "file": "C08.wav",
+      "duration": 3.05,
+      "sha256": "95dd81824ef2282061f5d2c2111b4fac4dfee3d470214aa56853322a5cbcd4a8"
+    },
+    {
+      "id": "Y01",
+      "group": "eye",
+      "text": "眼保健操。跟随示意，轻柔完成六节动作。",
+      "file": "Y01.wav",
+      "duration": 5.2,
+      "sha256": "f3486768637ef229faef5d982a8b95db92af5c973fa83f91395d37e0265f6612"
+    },
+    {
+      "id": "Y02",
+      "group": "eye",
+      "text": "第一节。拇指轻贴两侧眉头，其余指尖抵在前额，小幅轻揉。",
+      "file": "Y02.wav",
+      "duration": 7.1,
+      "sha256": "5c86a1f0d625d0611873ba766ba0903db774ce74a73f332e948820b6b1130e8c"
+    },
+    {
+      "id": "Y03",
+      "group": "eye",
+      "text": "第二节。食指轻贴鼻根两侧，靠近内眼角，轻轻上下按压，不压眼球。",
+      "file": "Y03.wav",
+      "duration": 7.6,
+      "sha256": "3fab116b003f4064286ce3542723fa1799dfdbcbb630a1143e10d1701d67f207"
+    },
+    {
+      "id": "Y04",
+      "group": "eye",
+      "text": "第三节。食指和中指并拢，中指第一关节对齐鼻翼。收回中指，用食指轻揉。",
+      "file": "Y04.wav",
+      "duration": 9.4,
+      "sha256": "bec1743e7051027745b0a0c6801f35caa54f153a46fab81f0a55a9ced5d3e118"
+    },
+    {
+      "id": "Y05",
+      "group": "eye",
+      "text": "第四节。拇指轻揉太阳穴四拍，再用食指第二指节内侧，沿眉骨向外轻刮两次。",
+      "file": "Y05.wav",
+      "duration": 8.8,
+      "sha256": "3664522cd5081d5b8265b1e98c20103d2deb70aa9c05a9e0c7fd91da0d27249b"
+    },
+    {
+      "id": "Y06",
+      "group": "eye",
+      "text": "第五节。双手抱头，拇指轻贴后脑枕骨下、两侧大筋外缘的凹陷，小幅轻揉。",
+      "file": "Y06.wav",
+      "duration": 8.6,
+      "sha256": "711d24e12b4f396d94f6cd5c128f1772a04fdd19ba2272c9fc094a9071fccbdb"
+    },
+    {
+      "id": "Y07",
+      "group": "eye",
+      "text": "第六节。拇指和食指轻捏耳垂，双脚落地，脚趾跟随节拍轻抓、放松。",
+      "file": "Y07.wav",
+      "duration": 8.5,
+      "sha256": "49afac8ae49ed7af5dbc6c3e0aa1c89839d4b4f69f842a62ba3555dc906b23c3"
+    },
+    {
+      "id": "E01",
+      "group": "end",
+      "text": "这一段结束了。准备好了，再慢慢回到手边的事情。",
+      "file": "E01.wav",
+      "duration": 5.4,
+      "sha256": "120a2618a9c719c82757717ba59078c264ecb325f2c868a6d87723acd538657b"
+    }
+  ],
+  "last_updated": "2026-11-15"
+}

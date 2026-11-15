@@ -77,3 +77,8 @@ html[data-theme='dusk'] .eye-guide{--eg-skin:#334557;--eg-hand-fill:#3e5363;--eg
 .body-session.floating .body-scan-stage{width:230px;height:160px;margin-bottom:8px}.body-session.floating .experience #phase{font-size:22px;margin-bottom:8px}.body-session.floating .experience #guidance{font-size:11px;min-height:3em}.body-session.floating .phase-eyebrow{font-size:8px!important;margin-bottom:8px!important}
 @media(prefers-reduced-motion:reduce){.nature-haze,.rest-eye-visual,.rest-eye-visual *{animation:none!important;transition:none!important}}
 .pianke-reduce-motion .nature-haze,.pianke-reduce-motion .rest-eye-visual *{animation:none!important;transition:none!important}
+
+/* Selected audio uses the same settings layout and palette. */
+.sound-scenes{grid-template-columns:repeat(3,minmax(0,1fr))}
+.music-choice{margin:20px 0}.music-choice select{max-width:70%}
+@media(max-width:450px){.sound-scenes{grid-template-columns:repeat(2,minmax(0,1fr))}.music-choice{align-items:flex-start;gap:10px;flex-direction:column}.music-choice select{max-width:100%;width:100%}}

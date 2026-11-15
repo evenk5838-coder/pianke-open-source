@@ -22,12 +22,20 @@
     ['整个身体','把注意放回整个身体。安静地停留一会儿，保持舒服的呼吸。',50]
   ].map(([title,text,y])=>Object.freeze({title,text,y}));
   const scenes = [
-    {id:'water',name:'水波',hint:'柔和起伏'},
-    {id:'rain',name:'细雨',hint:'均匀细密'},
-    {id:'wind',name:'微风',hint:'缓缓经过'},
-    {id:'leaves',name:'树叶',hint:'轻轻沙沙'},
-    {id:'fire',name:'篝火',hint:'低声噼啪'},
-    {id:'night',name:'夜色',hint:'稀疏虫鸣'}
+    {id:'water',track:'A01',name:'近岸轻水波',hint:'A01 · 轻轻起伏'},
+    {id:'rain',track:'A02',name:'细雨',hint:'A02 · 无雷声'},
+    {id:'wind',track:'A03',name:'轻微乡野风',hint:'A03 · 缓缓经过'},
+    {id:'lake',track:'A04',name:'岩岸湖水',hint:'A04 · 对照声景'},
+    {id:'stream',track:'A05',name:'小溪缓流',hint:'A05 · 细水流过'},
+    {id:'coast',track:'A06',name:'平静海岸',hint:'A06 · 拉罗谢尔'},
+    {id:'fire',track:'A07',name:'傍晚小火',hint:'A07 · 温暖火声'}
+  ];
+  const music = [
+    {id:'M01',name:'Fluidscape · 长线氛围'},
+    {id:'M02',name:'Meditation Impromptu 01 · 轻钢琴'},
+    {id:'M03',name:'Peace of Mind · 底音与钢琴'},
+    {id:'M04',name:'Tranquility · 冥想氛围'},
+    {id:'none',name:'安静 · 不播放背景配乐'}
   ];
   const focus = [
     ['让目光轻轻停留','看看圆心与周围的柔光。正常眨眼，不必盯紧。'],
@@ -36,7 +44,7 @@
     ['走神，也可以回来','不需要责备自己。重新看见眼前，就已经开始了。']
   ];
   const breathIntro=Object.freeze(['用鼻子，轻轻吸气。','用嘴巴，缓缓呼气。','鼻子吸气。','嘴巴呼气。接下来，高音吸，低音呼。']);
-  window.PiankeContent = Object.freeze({body,scenes,focus,breathIntro,
+  window.PiankeContent = Object.freeze({body,scenes,music,focus,breathIntro,
     bodyAt(elapsed,total){return body[Math.min(body.length-1,Math.floor(Math.max(0,elapsed)/Math.max(1,total)*body.length))];},
     focusAt(elapsed){const index=Math.floor(Math.max(0,elapsed)/35);return {key:index,title:focus[index%focus.length][0],text:focus[index%focus.length][1]};}
   });

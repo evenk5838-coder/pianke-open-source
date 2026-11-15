@@ -250,7 +250,8 @@
     methods:METHODS.length,
     cards:document.querySelectorAll('[data-method]').length,
     renderer:motion?.backend || 'unavailable',
-    chineseVoices:voices.filter(voice => /^zh[-_]/i.test(voice.lang)).length,
+    recordedVoiceClips:Object.keys(window.PIANKE_VOICE_RECORDINGS||{}).length,
+    voiceProvider:"OpenAI Marin fixed recordings",
     mode:host.mode,
     currentPractice:!!session
   }});

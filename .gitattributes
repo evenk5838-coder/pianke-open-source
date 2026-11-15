@@ -2,3 +2,5 @@
 *.jpg binary
 *.jpeg binary
 *.zip binary
+*.wav binary
+*.m4a binary

@@ -142,6 +142,7 @@ static NSImage *piankeStatusImage(void) {
 
     WKWebViewConfiguration *config=[WKWebViewConfiguration new];
     config.websiteDataStore=WKWebsiteDataStore.defaultDataStore;
+    config.mediaTypesRequiringUserActionForPlayback=WKAudiovisualMediaTypeNone;
     [config.userContentController addScriptMessageHandler:self name:@"pianke"];
     NSString *bridgePath=[NSBundle.mainBundle pathForResource:@"native" ofType:@"js"];
     NSString *bridge=[NSString stringWithContentsOfFile:bridgePath encoding:NSUTF8StringEncoding error:nil];

@@ -1,7 +1,7 @@
-# 片刻网页层
+# 片刻网页层 · 0.3.5 / build 12
 
-源码基线 0.3.1 / build 8。包含方法卡片、三种主题、全屏练习、可唤出的控制条、本机偏好与可选记录、程序声音及实时视觉效果。
+包括三类方法、三种主题、全屏沉浸、可唤出控制条、可选本机练习记录、实时视觉效果，以及48段Marin AI固定人声、七种环境录音与四首配乐。所有音频本地播放；无需API Key。
 
-从仓库根目录运行 `zsh outputs/pianke/start.command` 可预览；原生构建见根目录 README。浏览器预览无法提供系统菜单栏与跨应用快捷键。
+从仓库根目录运行 `zsh outputs/pianke/start.command` 预览；Mac菜单栏和全局快捷键需构建原生宿主，详见根目录README。引导想象开场已精简为“可以闭上眼睛。想象一处安静的林间。”。
 
-人声使用系统朗读，环境音和配乐为程序合成；第三方专业音频和动态自然视频尚未接入。背景音乐缺失、身体扫描卡顿等已知问题仍待处理。隐私与许可见仓库根目录 PRIVACY.md、NOTICE.md 和本目录 assets/ASSETS.md。
+代码、音频、摄影和插画的许可分别见根目录NOTICE.md、本目录assets/ASSETS.md、assets/audio/LICENSES.md和assets/voice/marin/PROVENANCE.md。技术验证范围见VERIFICATION.md；应用数据行为见根目录PRIVACY.md。
