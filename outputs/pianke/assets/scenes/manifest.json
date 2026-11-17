@@ -1,0 +1,307 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-11-17T14:42:12+08:00",
+  "timezone": "Asia/Shanghai",
+  "purpose": "Approved static scene images for seven natural sound categories with two selectable images each",
+  "generator": "built-in imagegen",
+  "source_is_ai_generated": true,
+  "video_included": false,
+  "third_party_audio_license": "See ../audio/LICENSES.md; audio is independently sourced, not a recording of the depicted AI scene",
+  "rights_note": "Generated for this project from prompts and earlier AI references. No separate third-party photo license is asserted for these images. This provenance statement is not a guarantee of legal clearance or exclusivity.",
+  "images": [
+    {
+      "id": "A01-N",
+      "name": "浅湾晨光",
+      "kind": "自然",
+      "src": "assets/scenes/A01-N.png",
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "966acd2a8b6507f5ef9a0c6a803867bee504afa0715795532f8d9f2ccebc7932",
+      "bytes": 2232522,
+      "original_bytes_preserved": true,
+      "processing": "none; original generated PNG copied byte-for-byte; viewport may crop it",
+      "type": "AI-generated static image",
+      "native_8k": false,
+      "field_recording_from_depicted_location": false
+    },
+    {
+      "id": "A01-U",
+      "name": "运河晚居",
+      "kind": "城市 / 室内",
+      "src": "assets/scenes/A01-U.png",
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "5a28a29aa8dc747577149bb8635ea48f7a0c7fc71e493287c908e08e44aec5d3",
+      "bytes": 2445201,
+      "original_bytes_preserved": true,
+      "processing": "none; original generated PNG copied byte-for-byte; viewport may crop it",
+      "type": "AI-generated static image",
+      "native_8k": false,
+      "field_recording_from_depicted_location": false
+    },
+    {
+      "id": "A02-N",
+      "name": "青苔雨庭",
+      "kind": "自然",
+      "src": "assets/scenes/A02-N.png",
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "4f5c93a439277a035765cd69699d253711b5582c6b93bc68f33183784b9e6f32",
+      "bytes": 3276352,
+      "original_bytes_preserved": true,
+      "processing": "none; original generated PNG copied byte-for-byte; viewport may crop it",
+      "type": "AI-generated static image",
+      "native_8k": false,
+      "field_recording_from_depicted_location": false
+    },
+    {
+      "id": "A02-U",
+      "name": "云端雨夜",
+      "kind": "城市 / 室内",
+      "src": "assets/scenes/A02-U.png",
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "0ca3d1469ee243046d2f5f5ed015ca38b26e9ceefb7cfc2fc1d64565417411ba",
+      "bytes": 2650170,
+      "original_bytes_preserved": true,
+      "processing": "none; original generated PNG copied byte-for-byte; viewport may crop it",
+      "type": "AI-generated static image",
+      "native_8k": false,
+      "field_recording_from_depicted_location": false
+    },
+    {
+      "id": "A03-N",
+      "name": "风过草坡",
+      "kind": "自然",
+      "src": "assets/scenes/A03-N.png",
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "96b5cc74aed8641ec11bbc840571117b64a48fb2f576e57bb9f33294960ecc9f",
+      "bytes": 2596990,
+      "original_bytes_preserved": true,
+      "processing": "none; original generated PNG copied byte-for-byte; viewport may crop it",
+      "type": "AI-generated static image",
+      "native_8k": false,
+      "field_recording_from_depicted_location": false
+    },
+    {
+      "id": "A03-U",
+      "name": "天台微风",
+      "kind": "城市 / 室内",
+      "src": "assets/scenes/A03-U.png",
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "bd8de001d9fcadb01c376eff71c0e186b9c30a0bee1386612b264bc32c9b5b3e",
+      "bytes": 2627437,
+      "original_bytes_preserved": true,
+      "processing": "none; original generated PNG copied byte-for-byte; viewport may crop it",
+      "type": "AI-generated static image",
+      "native_8k": false,
+      "field_recording_from_depicted_location": false
+    },
+    {
+      "id": "A04-N",
+      "name": "松影石岸",
+      "kind": "自然",
+      "src": "assets/scenes/A04-N.png",
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "1ee5acbe0ecf3d1f8a23176feb18c988cc2a4670ca99044b0f67cf83a9721d4e",
+      "bytes": 3023908,
+      "original_bytes_preserved": true,
+      "processing": "none; original generated PNG copied byte-for-byte; viewport may crop it",
+      "type": "AI-generated static image",
+      "native_8k": false,
+      "field_recording_from_depicted_location": false
+    },
+    {
+      "id": "A04-U",
+      "name": "湖岸书房",
+      "kind": "城市 / 室内",
+      "src": "assets/scenes/A04-U.png",
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "c95deafafdb9c7b5dd0135c64edd6d42000b76d8f633446f0d6cc2c666dc1e23",
+      "bytes": 2741981,
+      "original_bytes_preserved": true,
+      "processing": "none; original generated PNG copied byte-for-byte; viewport may crop it",
+      "type": "AI-generated static image",
+      "native_8k": false,
+      "field_recording_from_depicted_location": false
+    },
+    {
+      "id": "A05-N",
+      "name": "林间浅溪",
+      "kind": "自然",
+      "src": "assets/scenes/A05-N.png",
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "d6ed3932794d35de2cafd5aa77abdbd3c9a8b6e4acca449ec8bdaee63261096f",
+      "bytes": 3708995,
+      "original_bytes_preserved": true,
+      "processing": "none; original generated PNG copied byte-for-byte; viewport may crop it",
+      "type": "AI-generated static image",
+      "native_8k": false,
+      "field_recording_from_depicted_location": false
+    },
+    {
+      "id": "A05-U",
+      "name": "庭院水径",
+      "kind": "城市 / 室内",
+      "src": "assets/scenes/A05-U.png",
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "7d86420ab740aa17574fc82ec868095d6c9d2931095ca7e9dd7f93ee197c5c73",
+      "bytes": 3225729,
+      "original_bytes_preserved": true,
+      "processing": "none; original generated PNG copied byte-for-byte; viewport may crop it",
+      "type": "AI-generated static image",
+      "native_8k": false,
+      "field_recording_from_depicted_location": false
+    },
+    {
+      "id": "A06-N",
+      "name": "银蓝海湾",
+      "kind": "自然",
+      "src": "assets/scenes/A06-N.png",
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "765b4d675c1a45976740bfd9a4e57e7907889420d02715878c18c4e524e2ad69",
+      "bytes": 2304126,
+      "original_bytes_preserved": true,
+      "processing": "none; original generated PNG copied byte-for-byte; viewport may crop it",
+      "type": "AI-generated static image",
+      "native_8k": false,
+      "field_recording_from_depicted_location": false
+    },
+    {
+      "id": "A06-U",
+      "name": "海边晚居",
+      "kind": "城市 / 室内",
+      "src": "assets/scenes/A06-U.png",
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "c2dde33b8dd28b67a329f711d19f9a3b08ca794ace039a9cfa0869a1de00d4ac",
+      "bytes": 2211939,
+      "original_bytes_preserved": true,
+      "processing": "none; original generated PNG copied byte-for-byte; viewport may crop it",
+      "type": "AI-generated static image",
+      "native_8k": false,
+      "field_recording_from_depicted_location": false
+    },
+    {
+      "id": "A07-N",
+      "name": "林畔小火",
+      "kind": "自然",
+      "src": "assets/scenes/A07-N.png",
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "2e01f97e0ee2ad657cd293dec69608593f7c4666a6389c33823efb91fea17538",
+      "bytes": 2694533,
+      "original_bytes_preserved": true,
+      "processing": "none; original generated PNG copied byte-for-byte; viewport may crop it",
+      "type": "AI-generated static image",
+      "native_8k": false,
+      "field_recording_from_depicted_location": false
+    },
+    {
+      "id": "A07-U",
+      "name": "壁炉夜读",
+      "kind": "城市 / 室内",
+      "src": "assets/scenes/A07-U.png",
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "3a4ef55ec09db354125241ad33927a3e7c43aba5452adde53ffce834ee930141",
+      "bytes": 2639757,
+      "original_bytes_preserved": true,
+      "processing": "none; original generated PNG copied byte-for-byte; viewport may crop it",
+      "type": "AI-generated static image",
+      "native_8k": false,
+      "field_recording_from_depicted_location": false
+    }
+  ]
+}

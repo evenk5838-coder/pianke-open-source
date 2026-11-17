@@ -79,6 +79,37 @@ html[data-theme='dusk'] .eye-guide{--eg-skin:#334557;--eg-hand-fill:#3e5363;--eg
 .pianke-reduce-motion .nature-haze,.pianke-reduce-motion .rest-eye-visual *{animation:none!important;transition:none!important}
 
 /* Selected audio uses the same settings layout and palette. */
+.scene-image-choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:10px 0 12px}
+.scene-image-choice{position:relative;display:flex;flex-direction:column;padding:5px;border:1px solid #a8bdd344;border-radius:15px;background:var(--glass,#ffffff50);text-align:left;overflow:hidden;min-width:0;box-shadow:0 4px 14px #263e5410}
+.scene-image-choice img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:10px}
+.scene-image-choice>span{display:flex;align-items:center;justify-content:space-between;gap:5px;padding:10px 6px 7px}
+.scene-image-choice strong{font-size:13px;font-weight:500;color:var(--ink)}
+.scene-image-choice small{font-size:10px;color:var(--muted)}
+.scene-image-choice i{display:none;position:absolute;right:12px;top:12px;align-items:center;justify-content:center;width:22px;height:22px;background:#edf7ffeb;border:1px solid #fff;border-radius:50%;color:#375b7c;font-style:normal;font-size:12px;box-shadow:0 2px 8px #172d4b30}
+.scene-image-choice.selected{border-color:var(--accent);box-shadow:0 0 0 2px #96bad52e}.scene-image-choice.selected i{display:flex}
+.scene-image-choice:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.dialog:has(#sceneImageChoices){width:min(780px,calc(100vw - 32px))}
+.dialog:has(#sceneImageChoices) .config-main{padding-top:24px}
+.dialog:has(#sceneImageChoices) .config-main>.badge{display:none}
+.dialog:has(#sceneImageChoices) .config-description{margin-bottom:12px}
+.dialog:has(#sceneImageChoices) h3{margin-top:13px;margin-bottom:8px}
+.dialog:has(#sceneImageChoices) .sound-scenes{grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;margin-bottom:10px}
+.dialog:has(#sceneImageChoices) .sound-scenes button{padding:9px 11px}
+.dialog:has(#sceneImageChoices) .scene-image-choice img{aspect-ratio:16/7}
+@media(max-width:650px){.dialog:has(#sceneImageChoices) .sound-scenes{grid-template-columns:repeat(2,minmax(0,1fr))}.dialog:has(#sceneImageChoices) .config-main{padding-top:22px}}
+.session.nature-session:before,.nature-session .experience:before{display:none}
+.nature-session .experience{padding:0;background:#1b242c;overflow:hidden}
+.nature-image{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:center}
+.nature-caption{position:absolute;z-index:1;left:32px;bottom:135px;right:32px;text-align:left;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .4s,visibility .4s;text-shadow:0 2px 15px #000a}
+.nature-session.controls-visible .nature-caption{opacity:1;visibility:visible}
+.nature-session .nature-caption h2{font-size:24px;margin:0 0 5px;letter-spacing:2px;color:#fff;text-shadow:0 2px 15px #000a}
+.nature-session .nature-caption p{font-size:12px;margin:0 0 9px;color:#ffffffe6;letter-spacing:1px;text-shadow:0 2px 15px #000a}
+.nature-caption>span{font-size:10px;color:#ffffffab}
+.nature-session .sessiontop{text-shadow:0 1px 8px #0009}
+.nature-session .sessiontop button{text-shadow:none}
+.nature-session.floating .nature-caption{left:20px;bottom:98px}.nature-session.floating .nature-caption h2{font-size:19px}
+.nature-session.floating .sessiontop{width:calc(100% - 28px);gap:8px}.nature-session.floating .sessiontop>div{gap:4px}.nature-session.floating .sessiontop button{padding:7px 9px;font-size:10px}
+@media(max-width:450px){.scene-image-choice>span{align-items:flex-start;flex-direction:column;gap:3px}.scene-image-choice strong{font-size:12px}.nature-session .sessiontop{width:calc(100% - 24px);gap:6px}.nature-session .sessiontop>div{gap:4px}.nature-session .sessiontop button{padding:7px 8px;font-size:10px}.nature-caption{left:20px;bottom:120px}}
 .sound-scenes{grid-template-columns:repeat(3,minmax(0,1fr))}
 .music-choice{margin:20px 0}.music-choice select{max-width:70%}
 @media(max-width:450px){.sound-scenes{grid-template-columns:repeat(2,minmax(0,1fr))}.music-choice{align-items:flex-start;gap:10px;flex-direction:column}.music-choice select{max-width:100%;width:100%}}

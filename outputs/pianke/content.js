@@ -22,13 +22,13 @@
     ['整个身体','把注意放回整个身体。安静地停留一会儿，保持舒服的呼吸。',50]
   ].map(([title,text,y])=>Object.freeze({title,text,y}));
   const scenes = [
-    {id:'water',track:'A01',name:'近岸轻水波',hint:'A01 · 轻轻起伏'},
-    {id:'rain',track:'A02',name:'细雨',hint:'A02 · 无雷声'},
-    {id:'wind',track:'A03',name:'轻微乡野风',hint:'A03 · 缓缓经过'},
-    {id:'lake',track:'A04',name:'岩岸湖水',hint:'A04 · 对照声景'},
-    {id:'stream',track:'A05',name:'小溪缓流',hint:'A05 · 细水流过'},
-    {id:'coast',track:'A06',name:'平静海岸',hint:'A06 · 拉罗谢尔'},
-    {id:'fire',track:'A07',name:'傍晚小火',hint:'A07 · 温暖火声'}
+    {id:'water',track:'A01',name:'近岸轻水波',hint:'A01 · 轻轻起伏',images:[{"id":"A01-N","name":"浅湾晨光","kind":"自然","src":"assets/scenes/A01-N.png"},{"id":"A01-U","name":"运河晚居","kind":"城市 / 室内","src":"assets/scenes/A01-U.png"}]},
+    {id:'rain',track:'A02',name:'细雨',hint:'A02 · 无雷声',images:[{"id":"A02-N","name":"青苔雨庭","kind":"自然","src":"assets/scenes/A02-N.png"},{"id":"A02-U","name":"云端雨夜","kind":"城市 / 室内","src":"assets/scenes/A02-U.png"}]},
+    {id:'wind',track:'A03',name:'轻微乡野风',hint:'A03 · 缓缓经过',images:[{"id":"A03-N","name":"风过草坡","kind":"自然","src":"assets/scenes/A03-N.png"},{"id":"A03-U","name":"天台微风","kind":"城市 / 室内","src":"assets/scenes/A03-U.png"}]},
+    {id:'lake',track:'A04',name:'岩岸湖水',hint:'A04 · 对照声景',images:[{"id":"A04-N","name":"松影石岸","kind":"自然","src":"assets/scenes/A04-N.png"},{"id":"A04-U","name":"湖岸书房","kind":"城市 / 室内","src":"assets/scenes/A04-U.png"}]},
+    {id:'stream',track:'A05',name:'小溪缓流',hint:'A05 · 细水流过',images:[{"id":"A05-N","name":"林间浅溪","kind":"自然","src":"assets/scenes/A05-N.png"},{"id":"A05-U","name":"庭院水径","kind":"城市 / 室内","src":"assets/scenes/A05-U.png"}]},
+    {id:'coast',track:'A06',name:'平静海岸',hint:'A06 · 拉罗谢尔',images:[{"id":"A06-N","name":"银蓝海湾","kind":"自然","src":"assets/scenes/A06-N.png"},{"id":"A06-U","name":"海边晚居","kind":"城市 / 室内","src":"assets/scenes/A06-U.png"}]},
+    {id:'fire',track:'A07',name:'傍晚小火',hint:'A07 · 温暖火声',images:[{"id":"A07-N","name":"林畔小火","kind":"自然","src":"assets/scenes/A07-N.png"},{"id":"A07-U","name":"壁炉夜读","kind":"城市 / 室内","src":"assets/scenes/A07-U.png"}]}
   ];
   const music = [
     {id:'M01',name:'Fluidscape · 长线氛围'},

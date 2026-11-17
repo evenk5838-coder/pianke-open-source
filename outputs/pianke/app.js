@@ -25,7 +25,7 @@ const CATEGORIES = {
   eyes:['眼睛休息','暂时放下文字，留一点空白','两种方式 · 随时可以停止']
 };
 const BREATH = {inhale:4,exhale:6}; // Experience pacing, not a clinical prescription.
-const defaults = {save:null,volume:22,opacity:73,hue:212,visual:'smoke',voice:true,theme:'minimal',scene:'water',music:'M01',backgroundLevel:70};
+const defaults = {save:null,volume:22,opacity:73,hue:212,visual:'smoke',voice:true,theme:'minimal',scene:'water',sceneImages:{},music:'M01',backgroundLevel:70};
 let prefs = {...defaults};
 try { const p = JSON.parse(localStorage.getItem('pianke.prefs') || '{}'); prefs = {...defaults,...p}; } catch {}
 if (![true,false,null].includes(prefs.save)) prefs.save = null;
@@ -34,6 +34,32 @@ if (!['smoke','ripple'].includes(prefs.visual)) prefs.visual = 'smoke';
 if (!['minimal','mist','dusk'].includes(prefs.theme)) prefs.theme = 'minimal';
 // Keep legacy scene preferences intact; use a supported recording until chosen anew.
 function selectedScene() { return PiankeContent.scenes.some(x=>x.id===prefs.scene)?prefs.scene:'water'; }
+if (!prefs.sceneImages || typeof prefs.sceneImages!=='object' || Array.isArray(prefs.sceneImages)) prefs.sceneImages={};
+function selectedSceneImage(sceneId=selectedScene()) {
+  const scene=PiankeContent.scenes.find(x=>x.id===sceneId)||PiankeContent.scenes[0];
+  return scene.images.find(x=>x.id===prefs.sceneImages[scene.id])||scene.images[0];
+}
+function rememberSceneImage(sceneId,imageId) {
+  const scene=PiankeContent.scenes.find(x=>x.id===sceneId);
+  if(!scene?.images.some(x=>x.id===imageId))return;
+  prefs.sceneImages={...prefs.sceneImages,[sceneId]:imageId};savePrefs();
+  const art=$('.art.nature');if(art)art.style.backgroundImage=`url("${selectedSceneImage().src}")`;
+}
+function renderSceneImageChoices() {
+  const host=$('#sceneImageChoices');if(!host)return;
+  const scene=PiankeContent.scenes.find(x=>x.id===selectedScene()),selected=selectedSceneImage();
+  host.innerHTML=scene.images.map(x=>`<button class="scene-image-choice ${x.id===selected.id?'selected':''}" data-scene-image="${x.id}" aria-pressed="${x.id===selected.id}" aria-label="${x.name}，${x.kind}"><img src="${x.src}" alt="" width="1672" height="941"><span><strong>${x.name}</strong><small>${x.kind}</small></span><i aria-hidden="true">✓</i></button>`).join('');
+  host.querySelectorAll('[data-scene-image]').forEach(b=>b.onclick=()=>{rememberSceneImage(scene.id,b.dataset.sceneImage);host.querySelectorAll('[data-scene-image]').forEach(x=>{x.classList.toggle('selected',x===b);x.setAttribute('aria-pressed',x===b);});});
+}
+function applyNatureImage() {
+  if(session?.method.id!=='nature')return;
+  const scene=PiankeContent.scenes.find(x=>x.id===session.scene),picture=scene.images.find(x=>x.id===session.sceneImage)||selectedSceneImage(scene.id);
+  session.sceneImage=picture.id;const img=$('#natureImage');
+  img.src=picture.src;img.alt=picture.name;img.onerror=()=>toast('画面暂时未能载入，可以试试另一张。');
+  $('#natureImageTitle').textContent=picture.name;
+  $('#sessionLabel').textContent=scene.name;
+  $('#switchSceneImage').setAttribute('aria-label',`换个画面：${scene.images.find(x=>x.id!==picture.id).name}`);
+}
 if (!PiankeContent.music.some(x=>x.id===prefs.music)) prefs.music='M01';
 prefs.backgroundLevel=clamp(prefs.backgroundLevel,0,100,70);
 let history = [];
@@ -67,6 +93,7 @@ function renderCards() {
   $$('[data-category]').forEach(b=>{const active=b.dataset.category===category;b.classList.toggle('active',active);b.setAttribute('aria-pressed',active);});
   $('#cards').innerHTML=METHODS.filter(m=>m.cat===category).map(m=>`<button class="card" data-method="${m.id}" aria-label="${m.name}，${m.desc}"><div class="art ${m.id}" aria-hidden="true">${m.id==='body'?PiankeBodyGuide.markup({preview:true}):''}</div><div class="cardcontent"><div class="cardtitle">${m.name}<i aria-hidden="true">↗</i></div><p>${m.desc}</p><div class="cardmeta"><span class="duration">${clockIcon}${m.fixed?'完整六节 · 跟随节拍':m.times.join(' · ')+(m.game?' 局':' 分钟')}</span>${m.closed?`<span class="eyebadge">${closedEye}可闭眼</span>`:`<span class="badge">${m.fixed?'动画跟练':m.game?'点击练习':m.id==='focus'?'轻引导':'无需点击'}</span>`}</div></div></button>`).join('');
   $$('[data-method]').forEach(b=>b.onclick=()=>configure(b.dataset.method));
+  const natureArt=$('.art.nature');if(natureArt)natureArt.style.backgroundImage=`url("${selectedSceneImage().src}")`;
 }
 let dialogReturn = null;
 function updateFocusLayers() { const blocked=!!session||!$('#overlay').hidden; $$('.app,.macbar,#wake').forEach(el=>el.inert=blocked); }
@@ -78,16 +105,17 @@ function drawConfig() {
   const durationChoices=m.fixed?'<div class="session-summary"><strong>完整六节</strong><span>讲解后倒数 2 秒 · 每节四个八拍</span></div>':`<h3>${m.game?'练习局数':'停留多久'}</h3><div class="choices">${m.times.map(t=>`<button data-duration="${t}" class="${duration===t?'selected':''}" aria-pressed="${duration===t}">${t}${m.game?' 局':' 分钟'}</button>`).join('')}</div>`;
   const gameChoices=m.game?`<h3>${m.id==='schulte'?'手动选择难度':'搜索密度'}</h3><div class="choices">${[3,4,5].map(n=>`<button data-difficulty="${n}" class="${difficulty===n?'selected':''}" aria-pressed="${difficulty===n}">${m.id==='schulte'?`${n} × ${n}`:['5 × 5','7 × 7','9 × 9'][n-3]}</button>`).join('')}</div>`:'';
   const breathing=m.id==='breath'?`<div class="breath-timing"><span><b>4</b> 秒吸气</span><i></i><span><b>6</b> 秒呼气</span></div><h3>呼吸视觉</h3><div class="choices">${[['smoke','轻薄烟圈'],['ripple','宽柔水波']].map(([v,label])=>`<button data-visual="${v}" class="${prefs.visual===v?'selected':''}" aria-pressed="${prefs.visual===v}">${label}</button>`).join('')}</div>`:'';
-  const nature=m.id==='nature'?`<h3>选择声音</h3><div class="sound-scenes">${PiankeContent.scenes.map(x=>`<button data-scene="${x.id}" class="${selectedScene()===x.id?'selected':''}" aria-pressed="${selectedScene()===x.id}"><span>${x.name}</span><small>${x.hint}</small></button>`).join('')}</div><p class="small">已接入所选的七种实录声景；画面暂保留现有静态摄影。</p>`:'';
+  const nature=m.id==='nature'?`<h3>选择声音</h3><div class="sound-scenes">${PiankeContent.scenes.map(x=>`<button data-scene="${x.id}" class="${selectedScene()===x.id?'selected':''}" aria-pressed="${selectedScene()===x.id}"><span>${x.name}</span><small>${x.hint}</small></button>`).join('')}</div><h3>选择画面</h3><div id="sceneImageChoices" class="scene-image-choices" role="group" aria-label="选择画面"></div><p class="small">每种声音，两处风景。进入后点击画面，也可以切换。</p>`:'';
   const music=['soft','ambient'].includes(m.audio)?`<div class="field music-choice"><label for="startMusic">背景配乐</label><select id="startMusic">${PiankeContent.music.map(x=>`<option value="${x.id}" ${prefs.music===x.id?'selected':''}>${x.name}</option>`).join('')}</select></div>`:'';
   const background=['wind','soft','ambient'].includes(m.audio)?`<div class="field"><label for="startBackground">背景强度</label><input id="startBackground" type="range" min="0" max="100" value="${prefs.backgroundLevel}"></div><p class="small">背景轻声铺底，人声出现时会再降低。</p>`:'';
   dialog(`<div class="config-shell"><div class="config-main"><span class="badge">${m.fixed?'完整动画跟练':m.game?'按自己的节奏':'留一点空白'}</span><h2 id="dialogTitle">${m.name}</h2><p class="config-description">${m.detail}</p>${durationChoices}${gameChoices}${breathing}${nature}${music}<details class="config-detail"><summary>声音与更多设置</summary><div class="field"><label for="startSound">练习声音</label><select id="startSound"><option value="on" ${m.audio!=='none'||m.voice?'selected':''}>开启</option><option value="off" ${m.audio==='none'&&!m.voice?'selected':''}>静音</option></select></div><div class="field"><label for="startVolume">音量</label><input id="startVolume" type="range" min="0" max="100" value="${prefs.volume}"></div>${background}${m.voice?`<label class="voice-option"><input type="checkbox" id="startVoice" ${prefs.voice?'checked':''}> ${m.id==='focus'?'间隔语音提醒':'人声引导'}</label><p class="small">Marin 轻柔引导 · AI 生成的固定录音，保持原声原速，可关闭。</p>`:''}<p class="small">随时点击画面可唤出暂停、音量与结束。可以保持自己的舒服节奏。</p>${m.id==='eye'?'<a href="assets/eye-guide-sources.md" target="_blank">查看动作来源与说明 ↗</a>':''}</details></div><div class="config-footer"><span class="small">${m.game?'无需赶时间':m.id==='breath'?'不用刻意深呼吸':'给自己留一点空白'}</span><button id="startBtn" class="primary">开始${m.id==='eye'?'跟练':'这段片刻'} <span aria-hidden="true">↗</span></button></div></div>`);
   $$('[data-duration]').forEach(b=>b.onclick=()=>{duration=+b.dataset.duration;$$('[data-duration]').forEach(x=>{x.classList.toggle('selected',x===b);x.setAttribute('aria-pressed',x===b);});});
   $$('[data-difficulty]').forEach(b=>b.onclick=()=>{difficulty=+b.dataset.difficulty;$$('[data-difficulty]').forEach(x=>{x.classList.toggle('selected',x===b);x.setAttribute('aria-pressed',x===b);});});
   $$('[data-visual]').forEach(b=>b.onclick=()=>{prefs.visual=b.dataset.visual;$$('[data-visual]').forEach(x=>{x.classList.toggle('selected',x===b);x.setAttribute('aria-pressed',x===b);});savePrefs();});
-  $$('[data-scene]').forEach(b=>b.onclick=()=>{prefs.scene=b.dataset.scene;$$('[data-scene]').forEach(x=>{x.classList.toggle('selected',x===b);x.setAttribute('aria-pressed',x===b);});savePrefs();});
+  renderSceneImageChoices();
+  $$('[data-scene]').forEach(b=>b.onclick=()=>{prefs.scene=b.dataset.scene;$$('[data-scene]').forEach(x=>{x.classList.toggle('selected',x===b);x.setAttribute('aria-pressed',x===b);});savePrefs();renderSceneImageChoices();const art=$('.art.nature');if(art)art.style.backgroundImage=`url("${selectedSceneImage().src}")`;});
   $('#startBtn').onclick=()=>{
-    const config={sound:$('#startSound').value==='on',volume:+$('#startVolume').value,opening:false,voice:!!$('#startVoice')?.checked,scene:selectedScene(),music:$('#startMusic')?.value||prefs.music,backgroundLevel:$('#startBackground')?+$('#startBackground').value:prefs.backgroundLevel};
+    const config={sound:$('#startSound').value==='on',volume:+$('#startVolume').value,opening:false,voice:!!$('#startVoice')?.checked,scene:selectedScene(),sceneImage:selectedSceneImage().id,music:$('#startMusic')?.value||prefs.music,backgroundLevel:$('#startBackground')?+$('#startBackground').value:prefs.backgroundLevel};
     clearTimeout(auditionTimer);stopAudio();
     if(prefs.save===null)askStorage(()=>start(m,config));else start(m,config);
   };
@@ -214,10 +242,12 @@ async function start(m,config) {
   if(['wind','soft','ambient'].includes(m.audio))prefs.backgroundLevel=config.backgroundLevel;savePrefs();
   session={method:m,total:m.fixed?PiankeEyeGuide.totalDuration:duration*60,rounds:duration,difficulty,elapsed:0,paused:false,ready:false,sound:config.sound,volume:config.volume,voice:config.voice,scene:config.scene||selectedScene(),music:config.music||prefs.music,backgroundLevel:config.backgroundLevel??prefs.backgroundLevel,opening:0,openingDone:true,lastCue:-1,lastBeat:-1,results:[],round:1,next:1,mistakes:0,roundStart:0,waiting:false,started:new Date().toISOString(),timing:{clickedAt:performance.now()}};
   if(m.id==='eye')session.eyePacer=PiankeEyeGuide.createPacer();
+  session.sceneImage=PiankeContent.scenes.find(x=>x.id===session.scene)?.images.find(x=>x.id===config.sceneImage)?.id||selectedSceneImage(session.scene).id;
   updateFocusLayers();const s=session,box=$('#session');
   box.hidden=false;box.className='session'+(m.id==='breath'?' breath':'')+(m.game?' game-session':'')+(['nature','imagine'].includes(m.id)?' natural':'')+(m.id==='imagine'?' forest-scene':'')+` ${m.id}-session`+(reduceQuery.matches?' reduced-motion':'');box.removeAttribute('style');
   box.tabIndex=-1;box.focus({preventScroll:true});
   $('#sessionLabel').textContent=m.name;$('#viewBtn').textContent='切为浮窗';$('#pauseBtn').textContent='暂停';$('#pauseBtn').setAttribute('aria-label','暂停');$('#volume').value=config.volume;$('#muteBtn').setAttribute('aria-label',config.sound?'静音':'开启声音');$('#muteBtn').classList.toggle('muted',!config.sound);
+  $('#switchSceneImage').hidden=m.id!=='nature';
   $('#motionCanvas').hidden=m.id!=='breath';motion?.resize();
   lastFrame=performance.now();frameCount=0;frames=[];
   if(m.game)setupRound();else renderExperience();
@@ -238,13 +268,14 @@ function renderExperience() {
   PiankeEyeGuide.destroy();
   if(m.id==='breath') html='<div class="breath-copy"><p class="phase-eyebrow" id="phaseLabel">鼻吸 · 4 秒</p><h2 id="breathTitle">鼻子轻轻吸气</h2><p>不用刻意深呼吸</p><p class="closed-eyes" id="phaseHint">前两轮跟随人声，之后跟随提示音</p></div>';
   else if(m.id==='body') html=PiankeBodyGuide.markup()+'<p class="phase-eyebrow" id="bodyRegion">身体扫描 · 可闭眼聆听</p><h2 id="phase">从鼻尖，感受这一刻</h2><p class="subtle" id="guidance">可以闭眼，让身体自然地放着</p>';
-  else if(m.id==='nature') html=`<div class="nature-haze" aria-hidden="true"></div><p class="phase-eyebrow">${PiankeContent.scenes.find(x=>x.id===s.scene)?.name||'水波'} · 实录声景</p><h2>让环境陪你停一会儿</h2><p>可以闭眼聆听，不需要寻找任何声音</p><span class="scene-credit">Misty Lake · Dan Field / CC BY 3.0 · 静态摄影与动态光雾</span>`;
+  else if(m.id==='nature') html='<img id="natureImage" class="nature-image" alt=""><div class="nature-caption"><h2 id="natureImageTitle"></h2><p>可以闭眼聆听，让环境陪你停一会儿</p><span>AI 静态画面</span></div>';
   else if(m.id==='imagine') html='<h2>想象一处安静的林间</h2><p id="guidance">可以闭眼，给思绪留一点空白</p><span class="scene-credit">Forest Away Path · Seaq68 / CC0</span>';
   else if(m.id==='focus') html='<div class="focus-anchor" aria-hidden="true"></div><h2 class="focus-title" id="phase">让目光轻轻停留</h2><p id="guidance">正常眨眼，不必一直盯紧</p><span class="focus-guide-caption">觉察 · 返回</span>';
   else if(m.id==='sound') html=`<div class="minimal-ring" aria-hidden="true">${icon('speaker')}</div><h2>听见声音，走神后再回来</h2><p>可闭眼，无需点击</p>`;
   else if(m.id==='combo') html='<div class="rest-eye-visual" aria-hidden="true"><svg viewBox="0 0 240 130"><path d="M25 65Q60 12 100 65Q60 110 25 65M140 65Q180 12 215 65Q180 110 140 65"/><circle class="rest-pupil" data-x="63" cx="63" cy="65" r="11"/><circle class="rest-pupil" data-x="178" cx="178" cy="65" r="11"/></svg></div><h2 id="phase">自然地，完整眨几次眼</h2><p id="guidance">不用用力，保持自己的舒服节奏</p>';
   else if(m.id==='eye'){PiankeEyeGuide.mount($('#experience'),{state:s.eyePacer.snapshot(),paused:s.paused,reducedMotion:reduceQuery.matches});return;}
   $('#experience').innerHTML=html;
+  if(m.id==='nature')applyNatureImage();
 }
 function cue(t) {
   const s=session;if(!s||!s.ready)return;const m=s.method,e=Math.max(0,t);
@@ -429,11 +460,12 @@ function records() {dialog(`<h2 id="dialogTitle">留下的片刻</h2><p class="s
 function showReminder(style,preview) {const n=$('#notice');clearTimeout(toast.timer);n.className='notice'+(style==='full'?' full':'');n.hidden=false;n.innerHTML=`<span class="badge">${preview?'提醒样式预览':'页面计时提醒'}</span><h2>要不要，停留片刻？</h2><p>如果正读到投入处，也可以稍后再来。</p><div><button id="takeBreak" class="primary">打开片刻</button><button id="snooze">5 分钟后</button><button id="ignore">忽略</button></div>`;$('#takeBreak').onclick=()=>{n.hidden=true;closeDialog();wake();};$('#ignore').onclick=()=>n.hidden=true;$('#snooze').onclick=()=>{n.hidden=true;if(!reminder)reminder={interval:300,style,mode:'fixed',once:true};reminder.due=performance.now()+300000;};}
 setInterval(()=>{if(!reminder||performance.now()<reminder.due)return;if(session){reminder.due=performance.now()+300000;return;}const r=reminder;showReminder(r.style,false);if(r.once)reminder=null;else r.due=performance.now()+r.interval*1000;},500);
 function about() {
-  dialog(`<span class="badge">片刻 · 0.3.5</span><h2 id="dialogTitle">留一点空白。</h2><p>保留原有极简界面，新增雾光玻璃、暮色玻璃与更柔和的界面过渡。</p><h3>这轮更新</h3><p>4 秒吸气、6 秒呼气；简洁设置与首屏开始；身体扫描从五官向下；视觉聚焦增加间隔提醒；舒尔特 5 / 10 局、视觉搜索 10 / 20 / 30 局；完整六节眼保健操动画与轻缓方向性眼动。</p><h3>声音与自然画面</h3><p>已接入 A01–A07 七种实录声景，包括小溪、海岸与火声；Fluidscape、Meditation Impromptu 01、Peace of Mind、Tranquility 四首背景配乐，也可选择安静。人声出现时背景自动降低，暂停和收起时同步停声。Marin 轻柔人声已接入所有固定引导，为 AI 生成录音，保持原声原速，可关闭。AI 自然画面先确认首帧，再决定是否制作动画。目前的自然画面仍为授权静态摄影与动态光雾。</p><p class="small">练习时长是产品预设，不承诺注意力、阅读或视力改善。按摩示意按公开教学资料原创绘制，尚未经过专业人员逐图审校。</p><p><a href="assets/ASSETS.md" target="_blank">素材来源</a> · <a href="assets/audio/LICENSES.md" target="_blank">声音来源与许可</a> · <a href="assets/eye-guide-sources.md" target="_blank">眼部动作来源</a></p>`);
+  dialog(`<span class="badge">片刻 · 0.3.6</span><h2 id="dialogTitle">留一点空白。</h2><p>保留原有极简界面，新增雾光玻璃、暮色玻璃与更柔和的界面过渡。</p><h3>这轮更新</h3><p>4 秒吸气、6 秒呼气；简洁设置与首屏开始；身体扫描从五官向下；视觉聚焦增加间隔提醒；舒尔特 5 / 10 局、视觉搜索 10 / 20 / 30 局；完整六节眼保健操动画与轻缓方向性眼动。</p><h3>声音与自然画面</h3><p>已接入 A01–A07 七种实录声景，包括小溪、海岸与火声；Fluidscape、Meditation Impromptu 01、Peace of Mind、Tranquility 四首背景配乐，也可选择安静。人声出现时背景自动降低，暂停和收起时同步停声。Marin 轻柔人声已接入所有固定引导，为 AI 生成录音，保持原声原速，可关闭。自然声景已接入十四张 AI 静态画面，每种声音可选自然或城市 / 室内两种风景。进入后点击画面可切换，声音持续播放。</p><p class="small">练习时长是产品预设，不承诺注意力、阅读或视力改善。按摩示意按公开教学资料原创绘制，尚未经过专业人员逐图审校。</p><p><a href="assets/ASSETS.md" target="_blank">素材来源</a> · <a href="assets/audio/LICENSES.md" target="_blank">声音来源与许可</a> · <a href="assets/eye-guide-sources.md" target="_blank">眼部动作来源</a></p>`);
 }
 
 $$('[data-category]').forEach(b=>b.onclick=()=>{category=b.dataset.category;renderCards();});$('.brand').onclick=e=>{e.preventDefault();category='relax';renderCards();};$('#recordsBtn').onclick=records;$('#settingsBtn').onclick=settings;$('#aboutBtn').onclick=about;$('#miniBtn').onclick=collapse;$('#wake').onclick=wake;$('#menuToggle').onclick=()=>$('.app').hidden?wake():collapse();
 $('#pauseBtn').onclick=e=>{e.stopPropagation();togglePause();};$('#endBtn').onclick=$('#endControlBtn').onclick=e=>{e.stopPropagation();finish(false);};$('#viewBtn').onclick=e=>{e.stopPropagation();setFloating(!$('#session').classList.contains('floating'));};$('#fullscreenBtn').onclick=e=>{e.stopPropagation();toggleNativeFullscreen();};
+$('#switchSceneImage').onclick=e=>{e.stopPropagation();if(session?.method.id!=='nature')return;const scene=PiankeContent.scenes.find(x=>x.id===session.scene);session.sceneImage=scene.images.find(x=>x.id!==session.sceneImage).id;rememberSceneImage(scene.id,session.sceneImage);applyNatureImage();showControls();};
 $('#muteBtn').onclick=async e=>{
   e.stopPropagation();if(!session)return;const current=session;
   current.sound=!current.sound;audioEnabled=current.sound;
@@ -485,4 +517,4 @@ window.addEventListener('pagehide',handlePageHide);
 reduceQuery.addEventListener('change',()=>{if(session){$('#session').classList.toggle('reduced-motion',reduceQuery.matches);drawMotion();}});
 applyAppearance();renderCards();$('#menuToggle').setAttribute('aria-expanded','true');
 
-window.piankeDiagnostics=()=>({version:"0.3.5",build:12,theme:prefs.theme,method:session?.method.id||null,ready:session?.ready??false,paused:session?.paused??false,elapsed:session?.elapsed??null,phase:$("#session").dataset.breathPhase||null,timing:session?.timing?{...session.timing}:null,frameIntervals:frames.slice(),audioState:audioCtx?.state||"not-created",activeAudioNodes:nodes.length,recordedAudio:ambience?.diagnostics()||null,narration:narration?.diagnostics()||null});
+window.piankeDiagnostics=()=>({version:"0.3.6",build:13,theme:prefs.theme,method:session?.method.id||null,ready:session?.ready??false,paused:session?.paused??false,elapsed:session?.elapsed??null,phase:$("#session").dataset.breathPhase||null,timing:session?.timing?{...session.timing}:null,frameIntervals:frames.slice(),audioState:audioCtx?.state||"not-created",activeAudioNodes:nodes.length,recordedAudio:ambience?.diagnostics()||null,narration:narration?.diagnostics()||null});

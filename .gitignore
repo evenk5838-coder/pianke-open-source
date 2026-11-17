@@ -17,3 +17,5 @@ __pycache__/
 /outputs/pianke/preview/
 *.jsonl
 *.log
+
+/_site/
